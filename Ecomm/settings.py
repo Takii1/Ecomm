@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--8fhzx_mq8#vj1vd8!8qhitini=f^c9@+0)_-0!2j)k(x#@bw8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Taki001.pythonanywhere.com']
 
 
 # Application definition
@@ -74,10 +74,19 @@ WSGI_APPLICATION = 'Ecomm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Taki001$default',
+        'USER': 'Taki001',
+        'PASSWORD': 'Takiii@65',
+        'HOST': 'Taki001.mysql.pythonanywhere-services.com',
     }
 }
 
