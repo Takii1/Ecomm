@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure--8fhzx_mq8#vj1vd8!8qhitini=f^c9@+0)_-0!2j)k(x#@bw8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Taki001.pythonanywhere.com']
+# ALLOWED_HOSTS = ['Taki001.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -73,22 +74,23 @@ WSGI_APPLICATION = 'Ecomm.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+# # Local DB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Taki001$default',
-        'USER': 'Taki001',
-        'PASSWORD': 'Takiii@65',
-        'HOST': 'Taki001.mysql.pythonanywhere-services.com',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# # Production DataBase
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Taki001$default',
+#         'USER': 'Taki001',
+#         'PASSWORD': 'Takiii@65',
+#         'HOST': 'Taki001.mysql.pythonanywhere-services.com',
+#     }
+# }
 
 
 # Password validation
@@ -131,3 +133,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
