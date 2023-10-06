@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from .models import Products,Product_Images
+from .models import Categories
+from .models import Sub_Categories
 
 
 def index(request):
@@ -14,8 +17,17 @@ def about(request):
 
 
 def shop(request):
+    products = Products.objects.all()
+    products_with_images = [(product, product.product_images.first()) for product in products]
+    # categories = Categories.objects.all().values()
+    # sub_cat = Sub_Categories.objects.all().values()
+    data = {
+        "products": products_with_images,
+        # "categories": categories,
+        # "subCategories": sub_cat,
+    }
     template = loader.get_template('shop.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(data, request))
 
 
 def contact(request):
