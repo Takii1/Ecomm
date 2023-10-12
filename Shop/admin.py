@@ -1,32 +1,39 @@
 from django.contrib import admin
-from .models import Categories
+from .models import Categories, Home_Slider
 from .models import Sub_Categories
 from .models import Products
 from .models import Product_Images
 
 
 # Register your models here.
-class Category_list(admin.ModelAdmin):
+class CategoryList(admin.ModelAdmin):
     list_display = ('Cateogry_name',)
 
 
-admin.site.register(Categories, Category_list)
+admin.site.register(Categories, CategoryList)
 
 
-class Sub_cat_List(admin.ModelAdmin):
+class SubCatList(admin.ModelAdmin):
     list_display = ("subCategory_name", "Category",)
 
 
-admin.site.register(Sub_Categories, Sub_cat_List)
+admin.site.register(Sub_Categories, SubCatList)
 
 
 class PictureInline(admin.TabularInline):
     model = Product_Images
 
 
-class Product_list(admin.ModelAdmin):
+class ProductList(admin.ModelAdmin):
     list_display = ("product_name", "product_category", "product_subcategory", "product_status",)
     inlines = [PictureInline]
 
 
-admin.site.register(Products, Product_list)
+admin.site.register(Products, ProductList)
+
+
+class SliderList(admin.ModelAdmin):
+    list_display = ("slider_heading", "slider_text", "slider_priorty")
+
+
+admin.site.register(Home_Slider, SliderList)
