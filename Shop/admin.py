@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categories, Home_Slider
+from .models import Categories, Home_Slider, Qoutes
 from .models import Sub_Categories
 from .models import Products
 from .models import Product_Images
@@ -37,3 +37,10 @@ class SliderList(admin.ModelAdmin):
 
 
 admin.site.register(Home_Slider, SliderList)
+
+
+class QouteList(admin.ModelAdmin):
+    list_display = ("qoute", "auther", "forDate")
+
+
+admin.site.register(Qoutes, QouteList)
