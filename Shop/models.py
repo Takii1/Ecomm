@@ -49,7 +49,7 @@ class Home_Slider(models.Model):
     slider_text = models.CharField(max_length=255)
     slider_Image = models.ImageField(upload_to="shop/slider_images")
     slider_priorty = models.PositiveIntegerField(null=True, blank=True)
-    slide_link = models.TextField()
+    slide_link = models.TextField(null=True)
 
     def __str__(self):
         return f"{self.slider_heading}"
@@ -61,3 +61,12 @@ class Qoutes(models.Model):
 
     def __str__(self):
         return f"{self.qoute} - {self.auther} "
+
+class BestSelling(models.Model):
+    Product_id = models.ForeignKey(Products , on_delete=models.CASCADE)
+    status = models.IntegerField(null=True)
+    Added_Dated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.Product_id} - {self.status} {self.Added_Dated}"
+

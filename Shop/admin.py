@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categories, Home_Slider, Qoutes
+from .models import Categories, Home_Slider, Qoutes, BestSelling
 from .models import Sub_Categories
 from .models import Products
 from .models import Product_Images
@@ -44,3 +44,13 @@ class QouteList(admin.ModelAdmin):
 
 
 admin.site.register(Qoutes, QouteList)
+
+
+class BestSellingList(admin.ModelAdmin):
+    list_display = ("Product_id", "product_name", "Added_Dated")
+
+    def product_name(self, obj):
+        return obj.Product_id.product_name
+
+
+admin.site.register(BestSelling, BestSellingList)
