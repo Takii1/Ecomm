@@ -27,6 +27,7 @@ class PictureInline(admin.TabularInline):
 class ProductList(admin.ModelAdmin):
     list_display = ("product_name", "product_category", "product_subcategory", "product_status",)
     inlines = [PictureInline]
+    prepopulated_fields = {"slug": ("product_name",)}
 
 
 admin.site.register(Products, ProductList)

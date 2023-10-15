@@ -34,6 +34,7 @@ class Products(models.Model):
     product_status = models.PositiveIntegerField(null=True, blank=True)
     isFeatured = models.PositiveIntegerField(null=True, blank=True)
     priorty = models.PositiveIntegerField(null=True, blank=True)
+    slug = models.SlugField(default="", null=False)
 
     def __str__(self):
         return f"{self.product_name} - {str(self.product_category)} - {str(self.product_subcategory)}"
@@ -42,6 +43,9 @@ class Products(models.Model):
 class Product_Images(models.Model):
     product_id = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='product_images')
     product_Image = models.ImageField(upload_to="shop/images")
+
+    # def __str__(self):
+    #     return f'Image for {self.product.name}'
 
 
 class Home_Slider(models.Model):

@@ -1,0 +1,324 @@
+{% extends "components/master.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="site-banner padding-small bg-light-grey">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="breadcrumbs">
+              <span class="item">
+                <a href="index.html">Home /</a>
+              </span>
+              <span class="item">
+                <a href="shop.html">Shop /</a>
+              </span>
+              <span class="item">Shop Single</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="single-product padding-large">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="product-preview">
+              <div thumbsslider="" class="swiper thumb-swiper col-md-3 col-xs-3 swiper-initialized swiper-horizontal swiper-backface-hidden swiper-thumbs">
+                <div class="swiper-wrapper d-flex flex-wrap" id="swiper-wrapper-d7162daab184cc11" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                  {% for image in images %}
+    <div class="swiper-slide swiper-slide-visible" role="group" aria-label="{{ forloop.counter }} / {{ images|length }}" style="width: 153px;">
+        <img src="{{ image.product_Image.url }}" alt="">
+    </div>
+{% endfor %}
+
+
+{#                  <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 3" style="width: 153px;">#}
+{#                    <img src="images/product-thumbnail-2.jpg" alt="">#}
+{#                  </div>#}
+{#                  <div class="swiper-slide swiper-slide-visible" role="group" aria-label="3 / 3" style="width: 153px;">#}
+{#                    <img src="images/product-thumbnail-3.jpg" alt="">#}
+{#                  </div>#}
+                </div>
+              <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              <div class="swiper large-swiper overflow-hidden col-md-9 col-xs-9 swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
+                <div class="swiper-wrapper" id="swiper-wrapper-8f18875cf67b3973" aria-live="polite">
+                    {% for image in images %}
+                      <div class="swiper-slide swiper-slide-visible " role="group" aria-label="{{ forloop.counter }} / {{ images|length }}" style="width: 460px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                        <img src="{{ image.product_Image.url }}" alt="single-product">
+                      </div>
+                    {% endfor %}
+{#                  <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" style="width: 460px; opacity: 0; transform: translate3d(-460px, 0px, 0px);">#}
+{#                    <img src="images/product-large-2.jpg" alt="single-product">#}
+{#                  </div>#}
+{#                  <div class="swiper-slide" role="group" aria-label="3 / 3" style="width: 460px; opacity: 0; transform: translate3d(-920px, 0px, 0px);">#}
+{#                    <img src="images/product-large-3.jpg" alt="single-product">#}
+{#                  </div>#}
+                </div>
+              <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product-info">
+              <div class="element-header">
+                <h2 itemprop="name" class="product-title">{{ product.product_name }}</h2>
+                <div class="rating-container d-flex align-items-center">
+                  <div class="rating" data-rating="1" onclick="rate(1)">
+                    <i class="icon icon-star-full"></i>
+                  </div>
+                  <div class="rating" data-rating="2" onclick="rate(1)">
+                    <i class="icon icon-star-full"></i>
+                  </div>
+                  <div class="rating" data-rating="3" onclick="rate(1)">
+                    <i class="icon icon-star-full"></i>
+                  </div>
+                  <div class="rating" data-rating="4" onclick="rate(1)">
+                    <i class="icon icon-star-half"></i>
+                  </div>
+                  <div class="rating" data-rating="5" onclick="rate(1)">
+                    <i class="icon icon-star-empty"></i>
+                  </div>
+                  <span class="rating-count">(3.5)</span>
+                </div>
+              </div>
+              <div class="product-price">
+                <strong>$54.00</strong>
+                <del>$54.00</del>
+              </div>
+              <p>{{ product.product_short_description }}</p>
+              <div class="cart-wrap margin-small">
+                <div class="color-options product-select">
+                  <div class="color-toggle" data-option-index="0">
+                    <h4 class="item-title no-margin">Color:</h4>
+                    <ul class="select-list list-unstyled d-flex">
+                      <li class="select-item" data-val="Green" title="Green">
+                        <a href="#">Green</a>
+                      </li>
+                      <li class="select-item" data-val="Orange" title="Orange">
+                        <a href="#">Orange</a>
+                      </li>
+                      <li class="select-item" data-val="Red" title="Red">
+                        <a href="#">Red</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="swatch product-select" data-option-index="1">
+                  <h4 class="item-title no-margin">Size:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">
+                      <a href="#">S</a>
+                    </li>
+                    <li data-value="M" class="select-item">
+                      <a href="#">M</a>
+                    </li>
+                    <li data-value="L" class="select-item">
+                      <a href="#">L</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="product-quantity">
+                  <div class="item-title">
+                    <strong>2 in stock</strong>
+                  </div>
+                  <div class="stock-button-wrap">
+                    <div class="product-quantity d-flex align-items-center">
+                      <h4 class="item-title no-margin">Quantity:</h4>
+                      <div class="qty-field d-flex">
+                        <div class="qty-number d-flex justify-content-start align-items-center">
+                            <button class="decrement-button">-</button>
+                              <input type="text" id="quantity" name="quantity" class="spin-number-output" value="1" min="1" max="100">
+                            <button class="increment-button">+</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action-buttons">
+                  <button type="submit" class="btn btn-medium btn-dark">Buy now</button>
+                  <button type="submit" name="add" id="add-to-cart" class="btn btn-medium btn-dark">
+                    <span id="add-to-cart">Add to cart</span>
+                  </button>
+                  <button type="submit" class="btn btn-medium btn-dark"><i class="icon icon-heart"></i></button>
+                </div>
+              </div>
+              <div class="meta-product margin-small">
+                <div class="meta-item d-flex flex-wrap align-items-baseline">
+                  <h4 class="item-title no-margin">SKU:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">1223</li>
+                  </ul>
+                </div>
+                <div class="meta-item d-flex flex-wrap align-items-baseline">
+                  <h4 class="item-title no-margin">Category:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">
+                      <a href="#">Women</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#">Popular</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#">Orange</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="meta-item d-flex flex-wrap align-items-baseline">
+                  <h4 class="item-title no-margin">Tags:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">
+                      <a href="#">Classic</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#">Winter</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#">Modern</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="product-tabs">
+      <div class="container">
+        <div class="tabs-listing">
+          <nav>
+            <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+              <button class="nav-link" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab" aria-controls="nav-information" aria-selected="false">Additional information</button>
+              <button class="nav-link" id="nav-shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">Shipping &amp; Return</button>
+              <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <p>Product Description</p>
+              <p>{{ product.product_description }}</p>
+            </div>
+            <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
+              <p>It is Comfortable and Best</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
+              <p>Returns Policy</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan non dui sit amet. Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non, mattis sollicitudin purus. Mauris consequat justo a enim interdum, in consequat dolor accumsan. Nulla iaculis diam purus, ut vehicula leo efficitur at.</p>
+              <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc enim, sit amet pharetra erat aliquet ac.</p>
+              <p>Shipping</p>
+              <p>Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis pulvinar. Sed fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel scelerisque elit, et vestibulum metus. Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa, a fermentum arcu vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis consequat varius. Quisque a interdum augue. Nam ut nibh mauris.</p>
+            </div>
+            <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+              <div class="review-box review-style d-flex flex-wrap justify-content-between">
+                <div class="review-item d-flex">
+                  <div class="image-holder">
+                    <img src="images/review-image1.jpg" alt="review">
+                  </div>
+                  <div class="review-content">
+                    <div class="rating-container d-flex align-items-center">
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-half"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-empty"></i>
+                      </div>
+                      <span class="rating-count">(3.5)</span>
+                    </div>
+                    <div class="review-header">
+                      <span class="author-name">Tom Johnson</span>
+                      <span class="review-date">– 07/05/2022</span>
+                    </div>
+                    <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
+                  </div>
+                </div>
+                <div class="review-item d-flex">
+                  <div class="image-holder">
+                    <img src="images/review-image2.jpg" alt="review">
+                  </div>
+                  <div class="review-content">
+                    <div class="rating-container d-flex align-items-center">
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-full"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-half"></i>
+                      </div>
+                      <div class="rating">
+                        <i class="icon icon-star-empty"></i>
+                      </div>
+                      <span class="rating-count">(3.5)</span>
+                    </div>
+                    <div class="review-header">
+                      <span class="author-name">Jenny Willis</span>
+                      <span class="review-date">– 07/05/2022</span>
+                    </div>
+                    <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
+                  </div>
+                </div>
+              </div>
+              <div class="add-review margin-small">
+                <h3>Add a review</h3>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                <div class="review-rating">
+                  <span>Your rating *</span>
+                  <div class="rating-container d-flex align-items-center">
+                    <div class="rating" data-rating="1">
+                      <i class="icon icon-star-empty"></i>
+                    </div>
+                    <div class="rating" data-rating="2">
+                      <i class="icon icon-star-empty"></i>
+                    </div>
+                    <div class="rating" data-rating="3">
+                      <i class="icon icon-star-empty"></i>
+                    </div>
+                    <div class="rating" data-rating="4">
+                      <i class="icon icon-star-empty"></i>
+                    </div>
+                    <div class="rating" data-rating="5">
+                      <i class="icon icon-star-empty"></i>
+                    </div>
+                  </div>
+                </div>
+                <input type="file" class="jfilestyle" data-text="Choose your file">
+                <form id="form" class="padding-small">
+                  <label>Your Review *</label>
+                  <textarea placeholder="Write your review here" class="u-full-width"></textarea>
+                  <label>Your Name *</label>
+                  <input type="text" name="name" placeholder="Write your name here" class="u-full-width">
+                  <label>Your Email *</label>
+                  <input type="text" name="email" placeholder="Write your email here" class="u-full-width">
+                  <label>
+                      <input type="checkbox" required="">
+                      <span class="label-body">Save my name, email, and website in this browser for the next time.</span>
+                  </label>
+                  <button type="submit" name="submit" class="btn btn-dark btn-medium">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% include "components/lastest_blog.html" %}
+
+{% include "components/brands.html" %}
+
+{% include "components/insta.html" %}
+{% endblock %}

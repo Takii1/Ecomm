@@ -1,6 +1,6 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.utils import timezone
@@ -56,3 +56,12 @@ def shop(request):
 def contact(request):
     template = loader.get_template('contact.html')
     return HttpResponse(template.render())
+
+def singleProduct(request, slug):
+    prod_details = get_object_or_404(Products, slug=slug)
+    withImages = prod_details.product_images.all()
+    data = {
+        "product": prod_details,
+        "images": withImages
+    }
+    return render(request, 'single_product.html', data)
