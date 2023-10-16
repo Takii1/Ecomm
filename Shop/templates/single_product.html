@@ -82,8 +82,13 @@
                 </div>
               </div>
               <div class="product-price">
-                <strong>$54.00</strong>
-                <del>$54.00</del>
+                {% if product.product_sale_price %}
+                	<strong>${{ product.product_sale_price }}</strong>
+                    <del>${{ product.product_price }}</del>
+                    {% else %}
+                    <strong>${{ product.product_price }}</strong>
+                {% endif %}
+
               </div>
               <p>{{ product.product_short_description }}</p>
               <div class="cart-wrap margin-small">
@@ -200,8 +205,11 @@
               <p>{{ product.product_description }}</p>
             </div>
             <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
-              <p>It is Comfortable and Best</p>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              {% if product.additional_info %}
+              	<p>{{ product.additional_info }}</p>
+              {% else %}
+                  <p>No additional information</p>
+              {% endif %}
             </div>
             <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
               <p>Returns Policy</p>

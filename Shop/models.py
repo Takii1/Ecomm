@@ -22,10 +22,27 @@ class Sub_Categories(models.Model):
         return f"{self.subCategory_name}"
 
 
+class Colors(models.Model):
+    colorName = models.CharField(default="", max_length=55)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.colorName}-{self.added_at}"
+
+
+class Sizes(models.Model):
+    sizeName = models.CharField(default="", max_length=55)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sizeName} - {self.added_at}"
+
+
 class Products(models.Model):
     product_name = models.CharField(max_length=60)
     product_short_description = models.TextField(max_length=100)
     product_description = models.TextField()
+    additional_info = models.TextField(null=True, blank=True)
     product_price = models.IntegerField()
     product_sale_price = models.PositiveIntegerField(null=True, blank=True)
     product_upload_date = models.DateField()
@@ -33,6 +50,8 @@ class Products(models.Model):
     product_subcategory = models.ForeignKey(Sub_Categories, on_delete=models.CASCADE)
     product_status = models.PositiveIntegerField(null=True, blank=True)
     isFeatured = models.PositiveIntegerField(null=True, blank=True)
+    hasColors = models.PositiveIntegerField(default=0, null=True, blank=True)
+    hasSizes = models.PositiveIntegerField(default=0, null=True, blank=True)
     priorty = models.PositiveIntegerField(null=True, blank=True)
     slug = models.SlugField(default="", null=False)
 
@@ -58,6 +77,7 @@ class Home_Slider(models.Model):
     def __str__(self):
         return f"{self.slider_heading}"
 
+
 class Qoutes(models.Model):
     qoute = models.TextField()
     auther = models.CharField(max_length=55)
@@ -66,11 +86,11 @@ class Qoutes(models.Model):
     def __str__(self):
         return f"{self.qoute} - {self.auther} "
 
+
 class BestSelling(models.Model):
-    Product_id = models.ForeignKey(Products , on_delete=models.CASCADE)
+    Product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
     status = models.IntegerField(null=True)
     Added_Dated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.Product_id} - {self.status} {self.Added_Dated}"
-

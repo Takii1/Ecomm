@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categories, Home_Slider, Qoutes, BestSelling
+from .models import Categories, Home_Slider, Qoutes, BestSelling, Colors, Sizes
 from .models import Sub_Categories
 from .models import Products
 from .models import Product_Images
@@ -55,3 +55,17 @@ class BestSellingList(admin.ModelAdmin):
 
 
 admin.site.register(BestSelling, BestSellingList)
+
+
+class ColorList(admin.ModelAdmin):
+    list_display = ("colorName", "added_at")
+
+
+admin.site.register(Colors, ColorList)
+
+
+class SizeList(admin.ModelAdmin):
+    list_display = ("sizeName", "added_at")
+
+
+admin.register(Sizes, SizeList)
